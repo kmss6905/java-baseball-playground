@@ -20,4 +20,11 @@ public class StringTest {
         assertThat(result1).contains("1", "2");
         assertThat(result2).containsExactly("1");
     }
+
+    @Test
+    void removeBracket() {
+        String value = "(1,2)";
+        String result = value.substring(1, value.length() - 1);
+        assertThat(result).isEqualTo("1,2");
+    }
 }
