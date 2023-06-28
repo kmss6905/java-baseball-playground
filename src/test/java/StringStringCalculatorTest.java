@@ -1,10 +1,8 @@
-package study;
-
 import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
 
-class StringCalculatorTest {
+class StringStringCalculatorTest {
 
     /**
      * 계산식이 포함된 문자열이 들어온다.
@@ -20,8 +18,10 @@ class StringCalculatorTest {
         int before = 0;
         String value = "2 + 3 * 4 / 2";
         String operation = "";
-        String[] values = value.split(" ");
+        String[] values = value.split(" "); // 잘 나뉘어 들어갔는 지?
+
         for (String v: values) {
+            // 연산 종류에 따라 잘 선택됬는 지?
             switch (v) {
                 case "+":
                     operation = "+";
@@ -37,6 +37,7 @@ class StringCalculatorTest {
                     break;
                 default:
                     int current = Integer.parseInt(v);
+                    // 연산이 제대로 적용되었는 지?
                     if (operation == "*") {
                         before *= current;
                         break;
@@ -60,8 +61,4 @@ class StringCalculatorTest {
         }
         System.out.println(before);
     }
-}
-
-class StringCalculator {
-
 }
