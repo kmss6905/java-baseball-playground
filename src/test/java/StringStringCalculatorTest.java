@@ -1,10 +1,8 @@
-package study;
-
 import org.junit.jupiter.api.Test;
 
 import java.util.Objects;
 
-class StringCalculatorTest {
+class StringStringCalculatorTest {
 
     /**
      * 계산식이 포함된 문자열이 들어온다.
