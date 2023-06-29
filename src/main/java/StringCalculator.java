@@ -3,9 +3,13 @@ import java.util.Objects;
 public class StringCalculator {
 
     // 문자를 받아들이는 부분
-    private String[] parse(String formula) {
+    public String[] parse(String formula) {
         String[] elements = formula.split(" ");
-        return formula.split(" ");
+
+        // 검증
+        validateFormula(elements);
+
+        return elements;
     }
 
     // 주어진 문자열을 검증합니다.
