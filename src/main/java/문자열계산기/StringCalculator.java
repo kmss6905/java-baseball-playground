@@ -1,3 +1,5 @@
+package 문자열계산기;
+
 import java.util.Objects;
 
 public class StringCalculator {
