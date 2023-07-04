@@ -1,4 +1,4 @@
-package 문자열계산기;
+package stringcal;
 
 import java.util.Arrays;
 

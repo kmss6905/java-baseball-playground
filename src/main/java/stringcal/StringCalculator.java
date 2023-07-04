@@ -1,4 +1,4 @@
-package 문자열계산기;
+package stringcal;
 
 import java.util.Objects;
 
@@ -6,7 +6,7 @@ public class StringCalculator {
     private MathOperation mathOperation;
     private int before;
 
-    StringCalculator() {
+    public StringCalculator() {
     }
 
     // 문자를 받아들이는 부분
