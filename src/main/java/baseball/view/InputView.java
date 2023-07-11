@@ -1,7 +1,5 @@
 package baseball.view;
 
-import java.util.Scanner;
-
 public class InputView {
 
   public static final String PROMPT_MESSAGE = "숫자를 입력해 주세요: ";
