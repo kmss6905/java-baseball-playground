@@ -14,73 +14,89 @@ import java.util.Scanner;
 public class Main {
 
   public static void main(String[] args) {
-    // 스캐너 초기화
     Scanner scanner = new Scanner(System.in);
-
-    // 게임의 결과를 전역변수 ?!?
-    int strikeCnt = 0;
-    int ballCnt = 0;
-
-    // 컴퓨터 난수 생성
     int number = RandomNumberGenerator.generateRandomNumber();
-
-    // 게임을 계속해서 반복한다.
     while (true) {
-
-      // 입력 받기 전 설명 글 출력
       InputView inputView = new InputView();
       inputView.printNumberPrompt();
+      int[] userNumbers = getUserPromptNumber(scanner);
+      int[] answerNumbers = createRandomNumber(number);
 
-      // 사용자로부터 입력 받기
-      String userInput = scanner.next();
-      int[] arrNum = new int[3];
-      for (int i = 0; i < 3; i++) {
-        arrNum[i] = userInput.charAt(i) - '0';
-      }
 
-      // 컴퓨터 난수 생성
-      String stringComputerRandomNumber = String.valueOf(number);
-      int[] answerNumbers = new int[3];
-      for (int i = 0; i < 3; i++) {
-        answerNumbers[i] = stringComputerRandomNumber.charAt(i) - '0';
-      }
-
-      // 1. 사용자로부터 받은 번호와 컴퓨터 난수를 비교하여
-      // 2. 스트라이크, 볼 카운트 저장
-      for (int i = 0; i < arrNum.length; i++) {
-        for (int j = 0; j < answerNumbers.length; j++) {
-          if ((i == j) && arrNum[i] == answerNumbers[j]) {
-            strikeCnt += 1;
-          }
-          if ((i != j) && answerNumbers[j] == arrNum[i]) {
-            ballCnt += 1;
-          }
-        }
-      }
-
-      // 게임 종료와 동시에 게임 결과를 출력함.
-      // 1. 게임의 종료 조건, 게임의 종료 판단
-      // 2. 게임의 결과 출력
-      // 3. 게임 종료
-      if (strikeCnt == 3) {
-        System.out.println(strikeCnt+"스트라이크");
-        break;
-      }
-
-      // 게임 결과 출력
-      if (ballCnt != 0 || strikeCnt != 0) {
-        if (ballCnt == 0) {
-          System.out.println(strikeCnt+"스트라이크");
-        }else if(strikeCnt == 0){
-          System.out.println(ballCnt+"볼");
-        }else{
-          System.out.println(ballCnt+"볼"+strikeCnt+"스트라이크");
-        }
-      }else{
-        System.out.println("3볼");
-      }
-      ballCnt = 0;
-      strikeCnt = 0;
+      // Result 에서는 결과(볼,스트라이크 갯수)가 담겨 있고
+      // 이는 출력을 담당하는 메서드인 printGameResult 의 인자로 넘겨준다.
+      Result result = getResult(userNumbers, answerNumbers);
+      if (isAllStrike(result)) break;
+      printGameResult(result);
     }
+  }
+
+  // 게임 결과를 출력한다
+  private static void printGameResult(Result result) {
+    if (result.ballCnt != 0 || result.strikeCnt != 0) {
+      if (result.ballCnt == 0) {
+        System.out.println(result.strikeCnt + "스트라이크");
+      } else if (result.strikeCnt == 0) {
+        System.out.println(result.ballCnt + "볼");
+      } else {
+        System.out.println(result.ballCnt + "볼" + result.strikeCnt + "스트라이크");
+      }
+    } else {
+      System.out.println("3볼");
+    }
+  }
+
+  // 문제점
+  // 해당 함수는 하나의 역할만 하는 것이 아니라. 게임 종료 조건인 스크라이크 횟수 체크 뿐만 아니라, 관련된 프롬프트 문자열까지 출력하고 있다.
+  private static boolean isAllStrike(Result result) {
+    if (result.strikeCnt == 3) {
+      System.out.println(result.strikeCnt + "스트라이크");
+      return true;
+    }
+    return false;
+  }
+
+  private static Result getResult(int[] arrNum, int[] answerNumbers) {
+    int strikeCnt = 0;
+    int ballCnt = 0;
+    for (int i = 0; i < arrNum.length; i++) {
+      for (int j = 0; j < answerNumbers.length; j++) {
+        if ((i == j) && arrNum[i] == answerNumbers[j]) {
+          strikeCnt += 1;
+        }
+        if ((i != j) && answerNumbers[j] == arrNum[i]) {
+          ballCnt += 1;
+        }
+      }
+    }
+    return new Result(strikeCnt, ballCnt);
+  }
+
+  private static class Result {
+    public final int strikeCnt;
+    public final int ballCnt;
+
+    public Result(int strikeCnt, int ballCnt) {
+      this.strikeCnt = strikeCnt;
+      this.ballCnt = ballCnt;
+    }
+  }
+
+  private static int[] createRandomNumber(int number) {
+    String stringComputerRandomNumber = String.valueOf(number);
+    int[] answerNumbers = new int[3];
+    for (int i = 0; i < 3; i++) {
+      answerNumbers[i] = stringComputerRandomNumber.charAt(i) - '0';
+    }
+    return answerNumbers;
+  }
+
+  private static int[] getUserPromptNumber(Scanner scanner) {
+    int[] arrNum = new int[3];
+    String userInput = scanner.next();
+    for (int i = 0; i < 3; i++) {
+      arrNum[i] = userInput.charAt(i) - '0';
+    }
+    return arrNum;
   }
 }
