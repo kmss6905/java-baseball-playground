@@ -1,0 +1,70 @@
+repo_name: kmss6905/java-baseball-playground
+report_id: 97bfa54d26de2c403844da25fb274a4f
+version: 0.1
+repo_type: Public
+timestamp: '2024-03-13T07:21:08+00:00'
+requested_by: kmss6905
+provider: github
+branch: main
+detected_tools_count: 5
+tools:
+- name: Java
+  description: A concurrent, class-based, object-oriented, language specifically designed
+    to have as few implementation dependencies as possible
+  website_url: https://www.java.com
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/995/K85ZWV2F.png
+  detection_source_url: https://github.com/kmss6905/java-baseball-playground
+  detection_source: Repo Metadata
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/kmss6905/java-baseball-playground
+  detection_source: Repo Metadata
+- name: Gradle
+  description: A powerful build system for the JVM
+  website_url: https://www.gradle.org/
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Java Build Tools
+  image_url: https://img.stackshare.io/service/975/gradlephant-social-black-bg.png
+  detection_source_url: https://github.com/kmss6905/java-baseball-playground/blob/main/build.gradle
+  detection_source: build.gradle
+  last_updated_by: javajigi
+  last_updated_on: 2021-05-25 06:09:14.000000000 Z
+- name: org.assertj:assertj-core
+  description: Rich and fluent assertions for testing for Java
+  version: 3.19.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/kmss6905/java-baseball-playground/blob/main/build.gradle
+  detection_source: build.gradle
+  last_updated_by: javajigi
+  last_updated_on: 2021-05-25 06:09:14.000000000 Z
+- name: org.junit.jupiter:junit-jupiter
+  description: Module "junit-jupiter" of JUnit 5
+  version: 5.7.2
+  license: EPL-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: Maven Packages
+  image_url: https://img.stackshare.io/package/maven/image.png
+  detection_source_url: https://github.com/kmss6905/java-baseball-playground/blob/main/build.gradle
+  detection_source: build.gradle
+  last_updated_by: javajigi
+  last_updated_on: 2021-05-25 06:09:14.000000000 Z
